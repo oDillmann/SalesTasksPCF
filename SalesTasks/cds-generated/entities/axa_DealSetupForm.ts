@@ -42,6 +42,7 @@ export const axa_dealsetupformMetadata = {
     axa_Salesperson: ["mscrm.z2t_salesperson"],
     axa_Opportunity: ["mscrm.opportunity"],
     axa_Model: ["mscrm.z2t_model"],
+    axa_Make: ["mscrm.z2t_make"],
     axa_EquipmentNumberEQN: ["mscrm.z2t_equipment"],
     axa_CustomerProspect_contact: ["mscrm.contact"],
     axa_CustomerProspect_account: ["mscrm.account"],
@@ -99,6 +100,8 @@ export enum axa_DealSetupFormAttributes {
   axa_MachinePurchaseOrderNumber = "axa_machinepurchaseordernumber",
   axa_MachineSalesOrderNumber = "axa_machinesalesordernumber",
   axa_Machinetakeoffs = "axa_machinetakeoffs",
+  axa_Make = "axa_make",
+  axa_MakeName = "axa_makename",
   axa_Model = "axa_model",
   axa_ModelName = "axa_modelname",
   axa_Opportunity = "axa_opportunity",
@@ -250,6 +253,10 @@ export interface axa_DealSetupForm extends IEntity {
   axa_machinesalesordernumber?: string | null;
   // Machine take off(s) StringType
   axa_machinetakeoffs?: string | null;
+  // Make LookupType
+  axa_make?: import("cdsify").EntityReference | null;
+  //  StringType
+  axa_makename?: string | null;
   // Model LookupType
   axa_model?: import("cdsify").EntityReference | null;
   //  StringType

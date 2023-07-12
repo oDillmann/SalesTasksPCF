@@ -1,6 +1,7 @@
 {
   "entities": [
     "axa_dealsetupform",
+    "task",
     "axa_salesfulfillmentstatus",
     "axa_tasktemplate"
   ],
