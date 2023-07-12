@@ -1,0 +1,12 @@
+{
+  "entities": [
+    "axa_dealsetupform",
+    "axa_salesfulfillmentstatus",
+    "axa_tasktemplate"
+  ],
+  "actions": [],
+  "functions": [],
+  "output": {
+    "outputRoot": "./SalesTasks/cds-generated"
+  }
+}
