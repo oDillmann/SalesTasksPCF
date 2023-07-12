@@ -4,6 +4,9 @@ import React, { useEffect } from 'react';
 import ServiceProvider from '../ServiceProvider';
 import ContextProvider from '../viewModel/context';
 import SalesTasksVM from '../viewModel/SalesTasksVM';
+import TasksList from './TasksList';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+initializeIcons();
 
 interface props {
   serviceProvider: ServiceProvider;
@@ -27,7 +30,7 @@ const App = ({ entityId, serviceProvider }: props) => {
         </MessageBar>
       ) : (
         <ContextProvider value={vm}>
-          <></>
+          <TasksList />
         </ContextProvider >
       )}
     </>
