@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import CdsService from "../cdsService/CdsService";
 import { IInputs } from "../generated/ManifestTypes";
 import ServiceProvider from "../ServiceProvider";
+import { Department } from "../types/Department";
 
 export default class SalesTasksVM {
   public static readonly serviceName = "SalesTasksVM";
@@ -9,6 +10,7 @@ export default class SalesTasksVM {
   public context: ComponentFramework.Context<IInputs>;
   public notifyOutputChanged: () => void;
   public cdsService: CdsService;
+  public Departments: Department[] = [];
   public EntityId: string;
   public errorMessage?: string;
   public PCFerror?: string;
@@ -89,7 +91,8 @@ export default class SalesTasksVM {
 
   public async fetchData(): Promise<void> {
     try {
-      //GET STUFF
+      const departments = await this.cdsService.getTasks(this.EntityId);
+      this.Departments = departments
     } catch (e: any) {
       console.log(e);
       this.setError(e.message);
