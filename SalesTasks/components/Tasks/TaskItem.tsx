@@ -4,6 +4,7 @@ import { task_task_statecode } from '../../cds-generated/enums/task_task_stateco
 import { observer } from 'mobx-react';
 import { useVM } from '../../viewModel/context';
 import { Task } from '../../types/Task';
+import { taskMetadata } from '../../cds-generated/entities/Task';
 
 interface IProps {
   task: Task;
@@ -21,7 +22,12 @@ const TaskItem = ({ task }: IProps) => {
       verticalAlign='center'
       styles={{ root: { width: '100%' } }}
     >
-      <Stack grow horizontalAlign='start'>
+      <Stack
+        grow
+        styles={{ root: { cursor: "pointer" } }}
+        horizontalAlign='start'
+        onDoubleClick={() => { vm.context.navigation.openForm({ entityId: task.id, entityName: taskMetadata.logicalName }) }}
+      >
         <TooltipHost
           content={task.title}
           directionalHint={DirectionalHint.bottomCenter}
@@ -86,7 +92,7 @@ const TaskItem = ({ task }: IProps) => {
 
         )}
       </Stack>
-    </Stack>
+    </Stack >
   )
 };
 
