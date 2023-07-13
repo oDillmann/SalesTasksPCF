@@ -67,11 +67,11 @@ const BottomPart = ({ department, departmentTitle, expanded, onClick }: IPartPro
           }}
         >
           {department.tasks.some(task => task.status === task_task_statecode.Canceled) ? (
-            <Icon styles={{ root: { color: "red" } }} iconName="ErrorBadge" />
+            <Icon styles={{ root: { color: "red", fontWeight: '900' } }} iconName="ErrorBadge" />
           ) : department.tasks.some(task => task.status === task_task_statecode.Open) ? (
-            <Icon styles={{ root: { color: "orange" } }} iconName="Warning" />
+            <Icon styles={{ root: { color: "orange", fontWeight: '900' } }} iconName="Warning" />
           ) : (
-            <Icon styles={{ root: { color: "#009900" } }} iconName="CompletedSolid" />
+            <Icon styles={{ root: { color: "#009900", fontWeight: '900' } }} iconName="CompletedSolid" />
           )}
           <Text
             variant="medium"

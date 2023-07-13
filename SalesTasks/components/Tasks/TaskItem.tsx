@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Text, Icon, TooltipHost, DirectionalHint, IStyle, Spinner, SpinnerSize } from '@fluentui/react';
+import { Stack, Text, Icon, TooltipHost, DirectionalHint, IStyle, Spinner, SpinnerSize, Tooltip } from '@fluentui/react';
 import { task_task_statecode } from '../../cds-generated/enums/task_task_statecode';
 import { observer } from 'mobx-react';
 import { useVM } from '../../viewModel/context';
@@ -66,30 +66,37 @@ const TaskItem = ({ task }: IProps) => {
         {isLoading ? (
           <Spinner size={SpinnerSize.small} styles={{ root: { padding: '0.24rem' } }} />
         ) : (
-          <Icon
-            iconName="CheckMark"
-            color="#5555ff"
-            onClick={async () => {
-              setIsLoading(true);
-              await vm.MarkTaskAsComplete(task.id)
-              setIsLoading(false);
-            }}
-            styles={{
-              root: {
-                cursor: "pointer",
-                borderRadius: '4px',
-                transition: "all 0.05s ease-in-out",
-                padding: '0.3rem',
-                selectors: {
-                  ":active": {
-                    backgroundColor: "#5555ff44",
-                    color: "#0000ff"
+          <TooltipHost content={task.status === task_task_statecode.Completed ? "" : "Mark as complete"}>
+            <Icon
+              iconName="CheckMark"
+              onClick={async () => {
+                if (task.status === task_task_statecode.Completed) return;
+                setIsLoading(true);
+                await vm.MarkTaskAsComplete(task.id)
+                setIsLoading(false);
+              }}
+              styles={{
+                root: {
+                  cursor: task.status === task_task_statecode.Completed ? "" : "pointer",
+                  fontWeight: '900',
+                  color: task.status === task_task_statecode.Completed ? "#999999" : "#5555ff",
+                  borderRadius: '4px',
+                  transition: "all 0.05s ease-in-out",
+                  padding: '0.3rem',
+                  backgroundColor: task.status === task_task_statecode.Completed ? "#99999933" : "#5555ff11",
+                  selectors: task.status === task_task_statecode.Completed ? {} : {
+                    ":hover": {
+                      backgroundColor: "#5555ff22",
+                    },
+                    ":active": {
+                      backgroundColor: "#5555ff44",
+                      color: "#0000ff"
+                    }
                   }
                 }
-              }
-            }}
-          />
-
+              }}
+            />
+          </TooltipHost>
         )}
       </Stack>
     </Stack >
