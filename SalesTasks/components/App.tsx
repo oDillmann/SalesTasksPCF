@@ -6,7 +6,6 @@ import ContextProvider from '../viewModel/context';
 import SalesTasksVM from '../viewModel/SalesTasksVM';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import DepartmentsList from './Departments/DepartmentsList';
-import { TaskAttributes, taskMetadata } from '../cds-generated/entities/Task';
 import HorizontalDivider from './UI/HorizontalDivider';
 initializeIcons();
 
@@ -20,14 +19,12 @@ const App = ({ entityId, serviceProvider }: props) => {
   const forceUpdate = React.useReducer(() => ({}), {})[1] as () => void;
 
   const CommandBarItems = useMemo(() => {
-    return [
-      {
-        key: "refresh",
-        text: "Refresh",
-        iconProps: { iconName: "Refresh" },
-        onClick: () => vm.init(),
-      },
-    ];
+    return [{
+      key: "refresh",
+      text: "Refresh",
+      iconProps: { iconName: "Refresh" },
+      onClick: () => { vm.init() },
+    }];
   }, [vm.isLoading]);
 
   // this calls the init function again if the entityId changes, which eliminates the need for a refresh
