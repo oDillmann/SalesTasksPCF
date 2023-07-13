@@ -6,4 +6,5 @@ export type Task = {
   title: string;
   status: task_task_statecode;
   priority: task_task_prioritycode;
+  tradeIn: boolean;
 }

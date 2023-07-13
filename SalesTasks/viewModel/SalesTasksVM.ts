@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { task_task_statecode } from "../cds-generated/enums/task_task_statecode";
 import CdsService from "../cdsService/CdsService";
 import { IInputs } from "../generated/ManifestTypes";
 import ServiceProvider from "../ServiceProvider";
@@ -93,6 +94,26 @@ export default class SalesTasksVM {
     try {
       const departments = await this.cdsService.getTasks(this.EntityId);
       this.Departments = departments
+    } catch (e: any) {
+      console.log(e);
+      this.setError(e.message);
+    }
+  }
+
+  public async MarkTaskAsComplete(taskId: string) {
+    try {
+      await this.cdsService.markTaskAsComplete(taskId);
+      this.Departments = this.Departments.map((d) => {
+        const newD = { ...d };
+        newD.tasks = newD.tasks.map((t) => {
+          if (t.id === taskId) {
+            t.status = task_task_statecode.Completed;
+          }
+          return t;
+        })
+        return newD
+      })
+      this.forceUpdate();
     } catch (e: any) {
       console.log(e);
       this.setError(e.message);

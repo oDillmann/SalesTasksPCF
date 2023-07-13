@@ -13,7 +13,10 @@ interface ListItemProps {
 
 const DepartmentItem = ({ department, expanded, onClick }: ListItemProps) => {
   const departmentTitle = React.useMemo(
-    () => `${department.title} (${department.tasks.filter(t => t.status === task_task_statecode.Completed).length}, ${department.tasks.filter(t => t.status === task_task_statecode.Open).length}, ${department.tasks.filter(t => t.status === task_task_statecode.Canceled).length})`,
+    () => `${department.title} (
+    ${department.tasks.filter(t => t.status === task_task_statecode.Completed && t.tradeIn).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Open && t.tradeIn).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Canceled && t.tradeIn).length})`,
     [department])
 
   return (
@@ -68,7 +71,7 @@ const BottomPart = ({ department, departmentTitle, expanded, onClick }: IPartPro
           ) : department.tasks.some(task => task.status === task_task_statecode.Open) ? (
             <Icon styles={{ root: { color: "orange" } }} iconName="Warning" />
           ) : (
-            <Icon styles={{ root: { color: "#009900" } }} iconName="CheckMark" />
+            <Icon styles={{ root: { color: "#009900" } }} iconName="CompletedSolid" />
           )}
           <Text
             variant="medium"

@@ -17,6 +17,7 @@ interface props {
 
 const App = ({ entityId, serviceProvider }: props) => {
   const vm = serviceProvider.get<SalesTasksVM>(SalesTasksVM.serviceName);
+  const forceUpdate = React.useReducer(() => ({}), {})[1] as () => void;
 
   const CommandBarItems = useMemo(() => {
     if (vm.isLoading) {
@@ -59,6 +60,7 @@ const App = ({ entityId, serviceProvider }: props) => {
   // this calls the init function again if the entityId changes, which eliminates the need for a refresh
   useEffect(() => {
     vm.EntityId = entityId || "";
+    if (!vm.forceUpdate) vm.forceUpdate = forceUpdate;
     vm.init();
   }, [entityId]);
 
