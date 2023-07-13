@@ -20,34 +20,7 @@ const App = ({ entityId, serviceProvider }: props) => {
   const forceUpdate = React.useReducer(() => ({}), {})[1] as () => void;
 
   const CommandBarItems = useMemo(() => {
-    if (vm.isLoading) {
-      return [
-        {
-          key: "refresh",
-          text: "Refresh",
-          iconProps: { iconName: "Refresh" },
-          onClick: () => {
-            console.log('initing')
-            vm.init()
-          },
-        },
-      ];
-    }
     return [
-      {
-        key: "newItem",
-        text: "New Task",
-        iconProps: { iconName: "Add" },
-        onClick: () => {
-          /* redirect to new question form*/
-          vm.context.navigation.openForm({
-            entityName: taskMetadata.logicalName,
-            useQuickCreateForm: true,
-          }, {
-            [TaskAttributes.axa_SalesFulfillmentStatus]: vm.EntityId
-          });
-        }
-      },
       {
         key: "refresh",
         text: "Refresh",
