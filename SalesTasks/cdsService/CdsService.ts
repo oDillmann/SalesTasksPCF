@@ -16,7 +16,7 @@ export default class CdsService {
   public async getTasks(SalesFulId: string) {
     const fetchXml = [
       "?fetchXml=",
-      "<fetch top='50'>",
+      "<fetch>",
       "  <entity name='task'>",
       "    <attribute name='axa_department'/>",
       "    <attribute name='prioritycode'/>",
@@ -32,7 +32,6 @@ export default class CdsService {
     try {
       const res = await this.Context.webAPI.retrieveMultipleRecords(taskMetadata.logicalName, fetchXml);
       const GroupedTasks = this.groupTasksByDepartment(res.entities);
-      console.log(GroupedTasks)
       return GroupedTasks;
     } catch (e: any) {
       console.log(e);
@@ -76,10 +75,13 @@ export default class CdsService {
   }
 
   public async markTaskAsComplete(taskId: string) {
+    const userId = this.Context.userSettings.userId.slice(1, -1).toLowerCase();
     const task = {
       "@odata.type": "Microsoft.Dynamics.CRM.task",
       "statecode": task_task_statecode.Completed,
-      "statuscode": task_task_statuscode.Completed
+      "statuscode": task_task_statuscode.Completed,
+      "axa_CheckedBy_Task@odata.bind": `/systemusers(${userId})`,
+      "axa_checkeddate": new Date().toISOString()
     }
 
     try {

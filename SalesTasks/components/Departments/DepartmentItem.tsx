@@ -31,7 +31,7 @@ const DepartmentItem = ({ department, expanded, onClick }: ListItemProps) => {
           borderRadius: '3px',
           userSelect: 'none',
           overflow: 'hidden',
-          transition: 'all 0.1s ease-in-out',
+          transition: 'width 0.1s ease-in-out',
           padding: expanded ? '0.5rem' : '0.5rem 0'
         }
       }}
