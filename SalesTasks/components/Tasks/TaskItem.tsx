@@ -36,7 +36,7 @@ const TaskItem = ({ task }: IProps) => {
             variant="medium"
             styles={{
               root: (() => {
-                if (task.tradeIn) return ({
+                if (!task.isFaded) return ({
                   fontWeight: 600,
                   textOverflow: "ellipsis",
                   overflow: "hidden",

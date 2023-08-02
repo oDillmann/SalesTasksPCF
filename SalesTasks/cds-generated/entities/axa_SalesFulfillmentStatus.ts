@@ -18,6 +18,9 @@ export const axa_salesfulfillmentstatusMetadata = {
     statuscode: "Optionset",
     // Date Formats
     axa_esd: "DateOnly:UserLocal",
+    axa_estimatedcustomerreceiptdate: "DateOnly:UserLocal",
+    axa_estimatedpartsorderdate: "DateOnly:UserLocal",
+    axa_projectedservicestartdate: "DateOnly:UserLocal",
     createdon: "DateAndTime:UserLocal",
     modifiedon: "DateAndTime:UserLocal",
     overriddencreatedon: "DateOnly:UserLocal",
@@ -34,25 +37,36 @@ export const axa_salesfulfillmentstatusMetadata = {
     axa_ServiceCallnumber: ["mscrm.incident"],
     axa_Mocel: ["mscrm.z2t_model"],
     axa_DSF: ["mscrm.axa_dealsetupform"],
+    axa_CustomerProspect: ["mscrm.account"],
   },
 };
 
 // Attribute constants
 export enum axa_SalesFulfillmentStatusAttributes {
   axa_CustomerName = "axa_customername",
+  axa_CustomerProspect = "axa_customerprospect",
+  axa_CustomerProspectName = "axa_customerprospectname",
+  axa_CustomerProspectYomiName = "axa_customerprospectyominame",
   axa_Description = "axa_description",
+  axa_DoescustomerhaveCWS = "axa_doescustomerhavecws",
+  axa_DoesCustomerhavedatagovernanceform = "axa_doescustomerhavedatagovernanceform",
   axa_DSF = "axa_dsf",
   axa_DSFName = "axa_dsfname",
   axa_ESD = "axa_esd",
+  axa_EstimatedCustomerReceiptDate = "axa_estimatedcustomerreceiptdate",
+  axa_EstimatedPartsOrderDate = "axa_estimatedpartsorderdate",
+  axa_Internalfinancingrequired = "axa_internalfinancingrequired",
   axa_LocationBranch = "axa_locationbranch",
   axa_Mocel = "axa_mocel",
   axa_MocelName = "axa_mocelname",
   axa_Name = "axa_name",
+  axa_ProjectedServiceStartDate = "axa_projectedservicestartdate",
   axa_SalesFulfillmentStatusId = "axa_salesfulfillmentstatusid",
   axa_SalespersonResponsible = "axa_salespersonresponsible",
   axa_ServiceCallnumber = "axa_servicecallnumber",
   axa_ServiceCallnumberName = "axa_servicecallnumbername",
   axa_Statustxt = "axa_statustxt",
+  axa_Tradeinincluded = "axa_tradeinincluded",
   CreatedBy = "createdby",
   CreatedByName = "createdbyname",
   CreatedByYomiName = "createdbyyominame",
@@ -88,14 +102,30 @@ export enum axa_SalesFulfillmentStatusAttributes {
 export interface axa_SalesFulfillmentStatus extends IEntity {
   // Customer Name StringType
   axa_customername?: string | null;
+  // Customer/Prospect LookupType
+  axa_customerprospect?: import("cdsify").EntityReference | null;
+  //  StringType
+  axa_customerprospectname?: string | null;
+  //  StringType
+  axa_customerprospectyominame?: string | null;
   // Description StringType
   axa_description?: string | null;
+  // Does customer have  CWS BooleanType
+  axa_doescustomerhavecws?: boolean | null;
+  // Does Customer have data governance form BooleanType
+  axa_doescustomerhavedatagovernanceform?: boolean | null;
   // DSF LookupType
   axa_dsf?: import("cdsify").EntityReference | null;
   //  StringType
   axa_dsfname?: string | null;
   // ESD DateTimeType DateOnly:UserLocal
   axa_esd?: Date | null;
+  // Estimated Customer Receipt Date DateTimeType DateOnly:UserLocal
+  axa_estimatedcustomerreceiptdate?: Date | null;
+  // Estimated Parts Order Date DateTimeType DateOnly:UserLocal
+  axa_estimatedpartsorderdate?: Date | null;
+  // Internal financing required BooleanType
+  axa_internalfinancingrequired?: boolean | null;
   // Location/Branch crf08_nmclocation
   axa_locationbranch?: import("../enums/crf08_nmclocation").crf08_nmclocation | null;
   // Mocel LookupType
@@ -104,6 +134,8 @@ export interface axa_SalesFulfillmentStatus extends IEntity {
   axa_mocelname?: string | null;
   // ID StringType
   axa_name?: string | null;
+  // Projected Service Start Date DateTimeType DateOnly:UserLocal
+  axa_projectedservicestartdate?: Date | null;
   // Sales Fulfillment Status UniqueidentifierType Unique identifier for entity instances
   axa_salesfulfillmentstatusid?: import("cdsify").Guid | null;
   // Salesperson Responsible StringType
@@ -114,6 +146,8 @@ export interface axa_SalesFulfillmentStatus extends IEntity {
   axa_servicecallnumbername?: string | null;
   // Status(txt) StringType
   axa_statustxt?: string | null;
+  // Trade-in included BooleanType
+  axa_tradeinincluded?: boolean | null;
   // Created By LookupType Unique identifier of the user who created the record.
   createdby?: import("cdsify").EntityReference | null;
   //  StringType

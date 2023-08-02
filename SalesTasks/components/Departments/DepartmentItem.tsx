@@ -13,10 +13,10 @@ interface ListItemProps {
 
 const DepartmentItem = ({ department, expanded, onClick }: ListItemProps) => {
   const departmentTitle = React.useMemo(
-    () => `${department.title} (
-    ${department.tasks.filter(t => t.status === task_task_statecode.Completed && t.tradeIn).length},
-    ${department.tasks.filter(t => t.status === task_task_statecode.Open && t.tradeIn).length},
-    ${department.tasks.filter(t => t.status === task_task_statecode.Canceled && t.tradeIn).length})`,
+    () => `${department.title} 
+    (${department.tasks.filter(t => t.status === task_task_statecode.Completed && !t.isFaded).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Open && !t.isFaded).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Canceled && !t.isFaded).length})`,
     [department])
 
   return (

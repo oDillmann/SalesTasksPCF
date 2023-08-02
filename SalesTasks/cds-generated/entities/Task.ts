@@ -50,7 +50,7 @@ export const taskMetadata = {
     owningbusinessunit: ["businessunit"],
     owningteam: ["team"],
     owninguser: ["systemuser"],
-    regardingobjectid: ["account","bookableresourcebooking","bookableresourcebookingheader","bulkoperation","campaign","campaignactivity","cdi_automation","cdi_bulktxtmessage","cdi_emailcname","cdi_emailsend","cdi_emailtemplate","cdi_event","cdi_eventparticipation","cdi_executesocialpost","cdi_formcapture","cdi_import","cdi_importlog","cdi_iporganization","cdi_pageview","cdi_postedfield","cdi_postedform","cdi_postedsubscription","cdi_postedsurvey","cdi_subscriptionlist","cdi_subscriptionpreference","cdi_surveyanswer","cdi_surveyquestion","cdi_unsubscribe","cdi_visit","cdi_webcontent","contact","contract","entitlement","entitlementtemplate","incident","invoice","knowledgearticle","knowledgebaserecord","lead","msdyn_agreement","msdyn_agreementbookingdate","msdyn_agreementbookingincident","msdyn_agreementbookingproduct","msdyn_agreementbookingservice","msdyn_agreementbookingservicetask","msdyn_agreementbookingsetup","msdyn_agreementinvoicedate","msdyn_agreementinvoiceproduct","msdyn_agreementinvoicesetup","msdyn_bookingalertstatus","msdyn_bookingrule","msdyn_bookingtimestamp","msdyn_customerasset","msdyn_fieldservicesetting","msdyn_incidenttypecharacteristic","msdyn_incidenttypeproduct","msdyn_incidenttypeservice","msdyn_inventoryadjustment","msdyn_inventoryadjustmentproduct","msdyn_inventoryjournal","msdyn_inventorytransfer","msdyn_payment","msdyn_paymentdetail","msdyn_paymentmethod","msdyn_paymentterm","msdyn_playbookinstance","msdyn_postalbum","msdyn_postalcode","msdyn_processnotes","msdyn_productinventory","msdyn_projectteam","msdyn_purchaseorder","msdyn_purchaseorderbill","msdyn_purchaseorderproduct","msdyn_purchaseorderreceipt","msdyn_purchaseorderreceiptproduct","msdyn_purchaseordersubstatus","msdyn_quotebookingincident","msdyn_quotebookingproduct","msdyn_quotebookingservice","msdyn_quotebookingservicetask","msdyn_resourceterritory","msdyn_rma","msdyn_rmaproduct","msdyn_rmareceipt","msdyn_rmareceiptproduct","msdyn_rmasubstatus","msdyn_rtv","msdyn_rtvproduct","msdyn_rtvsubstatus","msdyn_salessuggestion","msdyn_shipvia","msdyn_swarm","msdyn_systemuserschedulersetting","msdyn_timegroup","msdyn_timegroupdetail","msdyn_timeoffrequest","msdyn_warehouse","msdyn_workorder","msdyn_workordercharacteristic","msdyn_workorderincident","msdyn_workorderproduct","msdyn_workorderresourcerestriction","msdyn_workorderservice","msdyn_workorderservicetask","new_accountplan","new_credithistory","nmc_cvaissue","nmc_jobtitle","nmc_parsstrategy","opportunity","quote","salesorder","site","stn_emr","z2t_accountsalespersonrelationship","z2t_changerequest","z2t_corresondenceinfo","z2t_csa","z2t_division","z2t_equipment","z2t_make","z2t_model","z2t_opportunityassociations","z2t_project","z2t_responsiblearea","z2t_revenuesummary","z2t_warranty"],
+    regardingobjectid: ["account","axa_salesfulfillmentstatus","bookableresourcebooking","bookableresourcebookingheader","bulkoperation","campaign","campaignactivity","cdi_automation","cdi_bulktxtmessage","cdi_emailcname","cdi_emailsend","cdi_emailtemplate","cdi_event","cdi_eventparticipation","cdi_executesocialpost","cdi_formcapture","cdi_import","cdi_importlog","cdi_iporganization","cdi_pageview","cdi_postedfield","cdi_postedform","cdi_postedsubscription","cdi_postedsurvey","cdi_subscriptionlist","cdi_subscriptionpreference","cdi_surveyanswer","cdi_surveyquestion","cdi_unsubscribe","cdi_visit","cdi_webcontent","contact","contract","entitlement","entitlementtemplate","incident","invoice","knowledgearticle","knowledgebaserecord","lead","msdyn_agreement","msdyn_agreementbookingdate","msdyn_agreementbookingincident","msdyn_agreementbookingproduct","msdyn_agreementbookingservice","msdyn_agreementbookingservicetask","msdyn_agreementbookingsetup","msdyn_agreementinvoicedate","msdyn_agreementinvoiceproduct","msdyn_agreementinvoicesetup","msdyn_bookingalertstatus","msdyn_bookingrule","msdyn_bookingtimestamp","msdyn_customerasset","msdyn_fieldservicesetting","msdyn_incidenttypecharacteristic","msdyn_incidenttypeproduct","msdyn_incidenttypeservice","msdyn_inventoryadjustment","msdyn_inventoryadjustmentproduct","msdyn_inventoryjournal","msdyn_inventorytransfer","msdyn_payment","msdyn_paymentdetail","msdyn_paymentmethod","msdyn_paymentterm","msdyn_playbookinstance","msdyn_postalbum","msdyn_postalcode","msdyn_processnotes","msdyn_productinventory","msdyn_projectteam","msdyn_purchaseorder","msdyn_purchaseorderbill","msdyn_purchaseorderproduct","msdyn_purchaseorderreceipt","msdyn_purchaseorderreceiptproduct","msdyn_purchaseordersubstatus","msdyn_quotebookingincident","msdyn_quotebookingproduct","msdyn_quotebookingservice","msdyn_quotebookingservicetask","msdyn_resourceterritory","msdyn_rma","msdyn_rmaproduct","msdyn_rmareceipt","msdyn_rmareceiptproduct","msdyn_rmasubstatus","msdyn_rtv","msdyn_rtvproduct","msdyn_rtvsubstatus","msdyn_salessuggestion","msdyn_shipvia","msdyn_swarm","msdyn_systemuserschedulersetting","msdyn_timegroup","msdyn_timegroupdetail","msdyn_timeoffrequest","msdyn_warehouse","msdyn_workorder","msdyn_workordercharacteristic","msdyn_workorderincident","msdyn_workorderproduct","msdyn_workorderresourcerestriction","msdyn_workorderservice","msdyn_workorderservicetask","new_accountplan","new_credithistory","nmc_cvaissue","nmc_jobtitle","nmc_parsstrategy","opportunity","quote","salesorder","site","stn_emr","z2t_accountsalespersonrelationship","z2t_changerequest","z2t_corresondenceinfo","z2t_csa","z2t_division","z2t_equipment","z2t_make","z2t_model","z2t_opportunityassociations","z2t_project","z2t_responsiblearea","z2t_revenuesummary","z2t_warranty"],
     serviceid: ["service"],
     slainvokedid: ["sla"],
     transactioncurrencyid: ["transactioncurrency"],
@@ -65,6 +65,7 @@ export enum TaskAttributes {
   ActualDurationMinutes = "actualdurationminutes",
   ActualEnd = "actualend",
   ActualStart = "actualstart",
+  axa_Cashpayment = "axa_cashpayment",
   axa_CheckedBy = "axa_checkedby",
   axa_CheckedByName = "axa_checkedbyname",
   axa_CheckedByYomiName = "axa_checkedbyyominame",
@@ -72,10 +73,12 @@ export enum TaskAttributes {
   axa_DealSetupForm = "axa_dealsetupform",
   axa_DealSetupFormName = "axa_dealsetupformname",
   axa_Department = "axa_department",
+  axa_Fasttrack = "axa_fasttrack",
   axa_Phase = "axa_phase",
   axa_SalesFulfillmentStatus = "axa_salesfulfillmentstatus",
   axa_SalesFulfillmentStatusName = "axa_salesfulfillmentstatusname",
   axa_TaskType = "axa_tasktype",
+  axa_Tradeinincluded = "axa_tradeinincluded",
   Category = "category",
   CreatedBy = "createdby",
   CreatedByName = "createdbyname",
@@ -156,6 +159,8 @@ export interface Task extends IEntity {
   actualend?: Date | null;
   // Actual Start DateTimeType Enter the actual start date and time for the task. By default, it displays when the task was created. DateOnly:UserLocal
   actualstart?: Date | null;
+  // Cash payment BooleanType
+  axa_cashpayment?: boolean | null;
   // Checked By LookupType
   axa_checkedby?: import("cdsify").EntityReference | null;
   //  StringType
@@ -170,6 +175,8 @@ export interface Task extends IEntity {
   axa_dealsetupformname?: string | null;
   // Department StringType
   axa_department?: string | null;
+  // Fast track BooleanType
+  axa_fasttrack?: boolean | null;
   // Phase IntegerType
   axa_phase?: number | null;
   // Sales Fulfillment Status LookupType
@@ -178,6 +185,8 @@ export interface Task extends IEntity {
   axa_salesfulfillmentstatusname?: string | null;
   // Task Type StringType
   axa_tasktype?: string | null;
+  // Trade-in included BooleanType
+  axa_tradeinincluded?: boolean | null;
   // Category StringType Type a category to identify the task type, such as lead gathering or customer follow up, to tie the task to a business group or function.
   category?: string | null;
   // Created By LookupType Shows who created the record.

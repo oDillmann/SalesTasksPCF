@@ -8,8 +8,8 @@ export const axa_tasktemplateMetadata = {
   primaryIdAttribute: "axa_tasktemplateid",
   attributeTypes: {
     // Numeric Types
-    axa_cashpayment: "Double",
     axa_phase: "Integer",
+    axa_tstartdate: "Double",
     axa_ttargetdate: "Double",
     importsequencenumber: "Integer",
     timezoneruleversionnumber: "Integer",
@@ -32,14 +32,17 @@ export const axa_tasktemplateMetadata = {
     modifiedby: ["mscrm.systemuser"],
     createdonbehalfby: ["mscrm.systemuser"],
     createdby: ["mscrm.systemuser"],
+    axa_Department: ["mscrm.axa_department"],
   },
 };
 
 // Attribute constants
 export enum axa_TaskTemplateAttributes {
   axa_Alerts = "axa_alerts",
-  axa_CashPayment = "axa_cashpayment",
+  axa_Cashpayment = "axa_cashpayment",
   axa_Department = "axa_department",
+  axa_DepartmentName = "axa_departmentname",
+  axa_Fasttrack = "axa_fasttrack",
   axa_Hasattachments = "axa_hasattachments",
   axa_ID = "axa_id",
   axa_Phase = "axa_phase",
@@ -48,6 +51,7 @@ export enum axa_TaskTemplateAttributes {
   axa_TaskTemplateId = "axa_tasktemplateid",
   axa_TaskType = "axa_tasktype",
   axa_Tradein = "axa_tradein",
+  axa_Tstartdate = "axa_tstartdate",
   axa_TTargetDate = "axa_ttargetdate",
   CreatedBy = "createdby",
   CreatedByName = "createdbyname",
@@ -84,10 +88,14 @@ export enum axa_TaskTemplateAttributes {
 export interface axa_TaskTemplate extends IEntity {
   // Alerts? BooleanType
   axa_alerts?: boolean | null;
-  // Cash Payment DoubleType
-  axa_cashpayment?: number | null;
-  // Department StringType
-  axa_department?: string | null;
+  // Cash payment BooleanType
+  axa_cashpayment?: boolean | null;
+  // Department LookupType
+  axa_department?: import("cdsify").EntityReference | null;
+  //  StringType
+  axa_departmentname?: string | null;
+  // Fast track BooleanType
+  axa_fasttrack?: boolean | null;
   // Has attachments? BooleanType
   axa_hasattachments?: boolean | null;
   // ID [Required] StringType
@@ -104,6 +112,8 @@ export interface axa_TaskTemplate extends IEntity {
   axa_tasktype?: string | null;
   // Trade-in? BooleanType
   axa_tradein?: boolean | null;
+  // T+ start date DoubleType
+  axa_tstartdate?: number | null;
   // T- Target Date DoubleType
   axa_ttargetdate?: number | null;
   // Created By LookupType Unique identifier of the user who created the record.

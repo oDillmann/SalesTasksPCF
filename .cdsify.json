@@ -3,7 +3,8 @@
     "axa_dealsetupform",
     "task",
     "axa_salesfulfillmentstatus",
-    "axa_tasktemplate"
+    "axa_tasktemplate",
+    "axa_dealsetupform"
   ],
   "actions": [],
   "functions": [],
