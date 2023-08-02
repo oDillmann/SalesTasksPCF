@@ -18,19 +18,19 @@ const TaskItem = ({ task }: IProps) => {
     <Stack
       key={task.id + "item"}
       horizontal
-      horizontalAlign='space-around'
+      horizontalAlign='space-between'
       verticalAlign='center'
-      styles={{ root: { width: '100%' } }}
+      styles={{ root: { maxWidth: '100%', width: '100%' } }}
+      tokens={{ childrenGap: '0.5rem' }}
     >
       <Stack
         grow
-        styles={{ root: { cursor: "pointer" } }}
+        styles={{ root: { cursor: "pointer", maxWidth: '81%' } }}
         horizontalAlign='start'
         onDoubleClick={() => { vm.context.navigation.openForm({ entityId: task.id, entityName: taskMetadata.logicalName }) }}
       >
-        <TooltipHost
-          content={task.title}
-          directionalHint={DirectionalHint.bottomCenter}
+        <Stack
+          styles={{ root: { maxWidth: '100%' } }}
         >
           <Text
             variant="medium"
@@ -52,9 +52,14 @@ const TaskItem = ({ task }: IProps) => {
               })()
             }}
           >
-            {task.title}
+            <TooltipHost
+              content={task.title}
+              directionalHint={DirectionalHint.bottomCenter}
+            >
+              {task.title}
+            </TooltipHost>
           </Text>
-        </TooltipHost>
+        </Stack>
       </Stack>
       <Stack horizontal horizontalAlign="center" verticalAlign="center" tokens={{ childrenGap: '0.5rem' }}>
         <Icon

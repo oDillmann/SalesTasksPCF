@@ -30,7 +30,7 @@ const DepartmentItem = ({ department, expanded, onClick }: ListItemProps) => {
           background: "rgba(255,73, 51, 0.1)",
           borderRadius: '3px',
           userSelect: 'none',
-          overflow: 'hidden',
+          overflowX: 'hidden',
           transition: 'width 0.1s ease-in-out',
           padding: expanded ? '0.5rem' : '0.5rem 0'
         }
