@@ -1,4 +1,5 @@
 import { axa_DealSetupFormAttributes } from "../cds-generated/entities/axa_DealSetupForm";
+import { axa_DepartmentAttributes } from "../cds-generated/entities/axa_Department";
 import { TaskAttributes, taskMetadata } from "../cds-generated/entities/Task";
 import { task_task_statecode } from "../cds-generated/enums/task_task_statecode";
 import { task_task_statuscode } from "../cds-generated/enums/task_task_statuscode";
@@ -9,6 +10,7 @@ export default class CdsService {
   public static readonly serviceName = "CdsService";
   public Context: ComponentFramework.Context<IInputs>;
   DSFalias = "DSF";
+  departmentAlias = "department";
 
   constructor(context: ComponentFramework.Context<IInputs>) {
     this.Context = context;
@@ -20,12 +22,14 @@ export default class CdsService {
       "<fetch>",
       "  <entity name='task'>",
       "    <attribute name='axa_cashpayment'/>",
-      "    <attribute name='axa_department'/>",
       "    <attribute name='axa_fasttrack'/>",
       "    <attribute name='axa_tradeinincluded'/>",
       "    <attribute name='statecode'/>",
       "    <attribute name='subject'/>",
       "    <attribute name='activityid'/>",
+      `    <link-entity name='axa_department' from='axa_departmentid' to='axa_department' link-type='outer' alias='${this.departmentAlias}'>`,
+      "      <attribute name='axa_name'/>",
+      "    </link-entity>",
       `    <link-entity name='axa_dealsetupform' from='axa_dealsetupformid' to='axa_dealsetupform' link-type='outer' alias='${this.DSFalias}'>`,
       "      <attribute name='axa_cashcustomer'/>",
       "      <attribute name='axa_fasttrack'/>",
@@ -53,7 +57,7 @@ export default class CdsService {
     const groupedTasks: { [Id: string]: Department } = {};
 
     tasks.forEach((task, index) => {
-      const department = task[TaskAttributes.axa_Department]
+      const department = task[`${this.departmentAlias}.${axa_DepartmentAttributes.axa_Name}`]
       const fastTrack = task[TaskAttributes.axa_Fasttrack]
       const tradeIn = task[TaskAttributes.axa_Tradeinincluded]
       const cashPayment = task[TaskAttributes.axa_Cashpayment]

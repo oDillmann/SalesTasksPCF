@@ -4,6 +4,7 @@
     "task",
     "axa_salesfulfillmentstatus",
     "axa_tasktemplate",
+    "axa_department",
     "axa_dealsetupform"
   ],
   "actions": [],

@@ -37,10 +37,11 @@ export const axa_dealsetupformMetadata = {
     modifiedby: ["mscrm.systemuser"],
     createdonbehalfby: ["mscrm.systemuser"],
     createdby: ["mscrm.systemuser"],
+    axa_Tradeinrequest: ["mscrm.crf08_tradeinrequest"],
     axa_ServiceCall: ["mscrm.incident"],
     axa_Salesperson1: ["mscrm.systemuser"],
     axa_Salesperson: ["mscrm.z2t_salesperson"],
-    axa_Quote: ["mscrm.msdyn_analyticsforcs"],
+    axa_Quote: ["mscrm.quote"],
     axa_Opportunity: ["mscrm.opportunity"],
     axa_Model: ["mscrm.z2t_model"],
     axa_Make: ["mscrm.z2t_make"],
@@ -116,7 +117,6 @@ export enum axa_DealSetupFormAttributes {
   axa_Quantity = "axa_quantity",
   axa_Quote = "axa_quote",
   axa_QuoteName = "axa_quotename",
-  axa_QuoteNumber = "axa_quotenumber",
   axa_Salesperson = "axa_salesperson",
   axa_Salesperson1 = "axa_salesperson1",
   axa_Salesperson1Name = "axa_salesperson1name",
@@ -131,6 +131,8 @@ export enum axa_DealSetupFormAttributes {
   axa_SoldToCustomerName = "axa_soldtocustomername",
   axa_State = "axa_state",
   axa_TradeinIncluded = "axa_tradeinincluded",
+  axa_Tradeinrequest = "axa_tradeinrequest",
+  axa_TradeinrequestName = "axa_tradeinrequestname",
   axa_Zipcode = "axa_zipcode",
   CreatedBy = "createdby",
   CreatedByName = "createdbyname",
@@ -283,12 +285,10 @@ export interface axa_DealSetupForm extends IEntity {
   axa_pickupdelivery?: import("../enums/axa_dealsetupform_axa_dealsetupform_axa_pickupdelivery").axa_dealsetupform_axa_dealsetupform_axa_pickupdelivery | null;
   // Quantity IntegerType
   axa_quantity?: number | null;
-  // Quote # LookupType
+  // Quote# LookupType
   axa_quote?: import("cdsify").EntityReference | null;
   //  StringType
   axa_quotename?: string | null;
-  // Quote Number StringType
-  axa_quotenumber?: string | null;
   // Salesperson LookupType
   axa_salesperson?: import("cdsify").EntityReference | null;
   // Salesperson # LookupType
@@ -317,6 +317,10 @@ export interface axa_DealSetupForm extends IEntity {
   axa_state?: string | null;
   // Trade-in Included BooleanType
   axa_tradeinincluded?: boolean | null;
+  // Trade-in request LookupType
+  axa_tradeinrequest?: import("cdsify").EntityReference | null;
+  //  StringType
+  axa_tradeinrequestname?: string | null;
   // Zipcode StringType
   axa_zipcode?: string | null;
   // Created By LookupType Unique identifier of the user who created the record.

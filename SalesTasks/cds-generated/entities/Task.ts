@@ -10,6 +10,8 @@ export const taskMetadata = {
     // Numeric Types
     actualdurationminutes: "Integer",
     axa_phase: "Integer",
+    axa_tstartdate: "Integer",
+    axa_ttargetdate: "Integer",
     exchangerate: "Decimal",
     importsequencenumber: "Integer",
     onholdtime: "Integer",
@@ -40,6 +42,7 @@ export const taskMetadata = {
     ownerid_task: ["mscrm.principal"],
     nmc_Store_Task: ["mscrm.site"],
     axa_SalesFulfillmentStatus_Task: ["mscrm.axa_salesfulfillmentstatus"],
+    axa_Department_Task: ["mscrm.axa_department"],
     axa_DealSetupForm_Task: ["mscrm.axa_dealsetupform"],
     axa_CheckedBy_Task: ["mscrm.systemuser"],
     activityid_activitypointer: ["mscrm.activitypointer"],
@@ -65,6 +68,7 @@ export enum TaskAttributes {
   ActualDurationMinutes = "actualdurationminutes",
   ActualEnd = "actualend",
   ActualStart = "actualstart",
+  axa_Alerts = "axa_alerts",
   axa_Cashpayment = "axa_cashpayment",
   axa_CheckedBy = "axa_checkedby",
   axa_CheckedByName = "axa_checkedbyname",
@@ -73,12 +77,17 @@ export enum TaskAttributes {
   axa_DealSetupForm = "axa_dealsetupform",
   axa_DealSetupFormName = "axa_dealsetupformname",
   axa_Department = "axa_department",
+  axa_DepartmentName = "axa_departmentname",
   axa_Fasttrack = "axa_fasttrack",
+  axa_Hasattachments = "axa_hasattachments",
   axa_Phase = "axa_phase",
+  axa_Recipients = "axa_recipients",
   axa_SalesFulfillmentStatus = "axa_salesfulfillmentstatus",
   axa_SalesFulfillmentStatusName = "axa_salesfulfillmentstatusname",
   axa_TaskType = "axa_tasktype",
   axa_Tradeinincluded = "axa_tradeinincluded",
+  axa_Tstartdate = "axa_tstartdate",
+  axa_Ttargetdate = "axa_ttargetdate",
   Category = "category",
   CreatedBy = "createdby",
   CreatedByName = "createdbyname",
@@ -159,6 +168,8 @@ export interface Task extends IEntity {
   actualend?: Date | null;
   // Actual Start DateTimeType Enter the actual start date and time for the task. By default, it displays when the task was created. DateOnly:UserLocal
   actualstart?: Date | null;
+  // Alerts? BooleanType
+  axa_alerts?: boolean | null;
   // Cash payment BooleanType
   axa_cashpayment?: boolean | null;
   // Checked By LookupType
@@ -173,12 +184,18 @@ export interface Task extends IEntity {
   axa_dealsetupform?: import("cdsify").EntityReference | null;
   //  StringType
   axa_dealsetupformname?: string | null;
-  // Department StringType
-  axa_department?: string | null;
+  // Department LookupType
+  axa_department?: import("cdsify").EntityReference | null;
+  //  StringType
+  axa_departmentname?: string | null;
   // Fast track BooleanType
   axa_fasttrack?: boolean | null;
+  // Has attachments? BooleanType
+  axa_hasattachments?: boolean | null;
   // Phase IntegerType
   axa_phase?: number | null;
+  // Recipients StringType
+  axa_recipients?: string | null;
   // Sales Fulfillment Status LookupType
   axa_salesfulfillmentstatus?: import("cdsify").EntityReference | null;
   //  StringType
@@ -187,6 +204,10 @@ export interface Task extends IEntity {
   axa_tasktype?: string | null;
   // Trade-in included BooleanType
   axa_tradeinincluded?: boolean | null;
+  // T+ start date IntegerType
+  axa_tstartdate?: number | null;
+  // T- target date IntegerType
+  axa_ttargetdate?: number | null;
   // Category StringType Type a category to identify the task type, such as lead gathering or customer follow up, to tie the task to a business group or function.
   category?: string | null;
   // Created By LookupType Shows who created the record.
