@@ -2,16 +2,16 @@ import React from 'react';
 import { DirectionalHint, Icon, Stack, Text, TooltipHost } from '@fluentui/react';
 import { task_task_statecode } from '../../cds-generated/enums/task_task_statecode';
 import { Department } from '../../types/Department';
+import { useBoolean } from '@fluentui/react-hooks'
 import { observer } from 'mobx-react';
 import TasksList from '../Tasks/TasksList';
 
 interface ListItemProps {
   department: Department;
-  expanded: boolean;
-  onClick: (item: Department) => void;
 }
 
-const DepartmentItem = ({ department, expanded, onClick }: ListItemProps) => {
+const DepartmentItem = ({ department }: ListItemProps) => {
+  const [expanded, { toggle: toggleExpantion }] = useBoolean(false);
   const departmentTitle = React.useMemo(
     () => `${department.title} 
     (${department.tasks.filter(t => t.status === task_task_statecode.Completed && !t.isFaded).length},
@@ -26,18 +26,16 @@ const DepartmentItem = ({ department, expanded, onClick }: ListItemProps) => {
       styles={{
         root: {
           width: expanded ? "300px" : "3ch",
-          height: "100%",
+          height: "400px",
           background: "rgba(255,73, 51, 0.1)",
           borderRadius: '3px',
           userSelect: 'none',
-          overflowX: 'hidden',
-          transition: 'width 0.1s ease-in-out',
           padding: expanded ? '0.5rem' : '0.5rem 0'
         }
       }}
     >
-      <TopPart expanded={expanded} departmentTitle={departmentTitle} department={department} onClick={onClick} />
-      <BottomPart expanded={expanded} departmentTitle={departmentTitle} department={department} onClick={onClick} />
+      <TopPart expanded={expanded} departmentTitle={departmentTitle} department={department} onClick={toggleExpantion} />
+      <BottomPart expanded={expanded} departmentTitle={departmentTitle} department={department} onClick={toggleExpantion} />
     </Stack >
   );
 }
