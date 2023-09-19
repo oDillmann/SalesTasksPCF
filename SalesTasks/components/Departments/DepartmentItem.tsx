@@ -22,7 +22,6 @@ const DepartmentItem = ({ department }: ListItemProps) => {
   return (
     <Stack
       horizontalAlign="start"
-      tokens={{ childrenGap: "0.5rem" }}
       styles={{
         root: {
           width: expanded ? "300px" : "3ch",
@@ -36,7 +35,7 @@ const DepartmentItem = ({ department }: ListItemProps) => {
     >
       <TopPart expanded={expanded} departmentTitle={departmentTitle} department={department} onClick={toggleExpantion} />
       <BottomPart expanded={expanded} departmentTitle={departmentTitle} department={department} onClick={toggleExpantion} />
-    </Stack >
+    </Stack>
   );
 }
 
@@ -59,6 +58,7 @@ const BottomPart = ({ department, departmentTitle, expanded, onClick }: IPartPro
           styles={{
             root: {
               cursor: 'pointer',
+              paddingTop: '0.5rem',
               width: "100%",
               height: "100%",
             }

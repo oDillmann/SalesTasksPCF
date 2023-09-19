@@ -1,3 +1,4 @@
+import { Stack } from "@fluentui/react";
 import React from "react";
 import { Department } from "../../types/Department";
 import TaskItem from "./TaskItem";
@@ -8,12 +9,17 @@ interface IProps {
 
 const TasksList = ({ department }: IProps) => {
   return (
-    <>
+    <Stack styles={{
+      root: {
+        paddingTop: "0.5rem",
+        width: '100%'
+      }
+    }}>
       {department.tasks.map(task => {
         console.log(task.title, task.tradeIn);
         return <TaskItem task={task} key={task.id + "taskItem"} />;
       })}
-    </>
+    </Stack>
   );
 };
 
