@@ -5,7 +5,6 @@ export type Task = {
   id: string;
   title: string;
   status: task_task_statecode;
-  isFaded: boolean;
   tradeIn: boolean;
   cashPayment: boolean;
   fastTrack: boolean;

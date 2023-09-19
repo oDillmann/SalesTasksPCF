@@ -67,17 +67,6 @@ export default class CdsService {
         cashPayment: task[`${this.DSFalias}.${axa_DealSetupFormAttributes.axa_Cashcustomer}`],
         fastTrack: task[`${this.DSFalias}.${axa_DealSetupFormAttributes.axa_FastTrack}`],
       }
-      let isFaded = false;
-      if (DSF.fastTrack === false && fastTrack === true) {
-        isFaded = true
-      }
-      if (DSF.tradeIn === false && tradeIn === true) {
-        isFaded = true
-      }
-      if (DSF.cashPayment === false && cashPayment === true) {
-        isFaded = true
-      }
-
       if (!groupedTasks[department]) {
         groupedTasks[department] = {
           id: index,
@@ -90,7 +79,6 @@ export default class CdsService {
               fastTrack: fastTrack,
               tradeIn: tradeIn,
               cashPayment: cashPayment,
-              isFaded: isFaded,
               DSF: DSF,
             }
           ]
@@ -103,7 +91,6 @@ export default class CdsService {
           fastTrack: fastTrack,
           tradeIn: tradeIn,
           cashPayment: cashPayment,
-          isFaded: isFaded,
           DSF: DSF,
         })
       }

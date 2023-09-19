@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Text, Icon, TooltipHost, DirectionalHint, IStyle, Spinner, SpinnerSize, Tooltip } from '@fluentui/react';
+import { Stack, Text, Icon, TooltipHost, DirectionalHint, IStyle, Spinner, SpinnerSize } from '@fluentui/react';
 import { task_task_statecode } from '../../cds-generated/enums/task_task_statecode';
 import { observer } from 'mobx-react';
 import { useVM } from '../../viewModel/context';
@@ -36,18 +36,11 @@ const TaskItem = ({ task }: IProps) => {
             variant="medium"
             styles={{
               root: (() => {
-                if (!task.isFaded) return ({
-                  fontWeight: 600,
-                  textOverflow: "ellipsis",
-                  overflow: "hidden",
-                  whiteSpace: 'nowrap',
-                } as IStyle);
                 return {
                   fontWeight: 600,
                   textOverflow: "ellipsis",
                   overflow: "hidden",
                   whiteSpace: 'nowrap',
-                  color: "#aaa",
                 } as IStyle
               })()
             }}

@@ -14,9 +14,9 @@ const DepartmentItem = ({ department }: ListItemProps) => {
   const [expanded, { toggle: toggleExpantion }] = useBoolean(false);
   const departmentTitle = React.useMemo(
     () => `${department.title} 
-    (${department.tasks.filter(t => t.status === task_task_statecode.Completed && !t.isFaded).length},
-    ${department.tasks.filter(t => t.status === task_task_statecode.Open && !t.isFaded).length},
-    ${department.tasks.filter(t => t.status === task_task_statecode.Canceled && !t.isFaded).length})`,
+    (${department.tasks.filter(t => t.status === task_task_statecode.Completed).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Open).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Canceled).length})`,
     [department])
 
   return (
