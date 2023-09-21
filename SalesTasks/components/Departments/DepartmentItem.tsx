@@ -14,8 +14,8 @@ const DepartmentItem = ({ department }: ListItemProps) => {
   const [expanded, { toggle: toggleExpantion }] = useBoolean(false);
   const departmentTitle = React.useMemo(
     () => `${department.title} 
-    (${department.tasks.filter(t => t.status === task_task_statecode.Completed).length},
-    ${department.tasks.filter(t => t.status === task_task_statecode.Open).length},
+    (${department.tasks.filter(t => t.status === task_task_statecode.Open).length},
+    ${department.tasks.filter(t => t.status === task_task_statecode.Completed).length},
     ${department.tasks.filter(t => t.status === task_task_statecode.Canceled).length})`,
     [department])
 
@@ -64,12 +64,12 @@ const BottomPart = ({ department, departmentTitle, expanded, onClick }: IPartPro
             }
           }}
         >
-          {department.tasks.some(task => task.status === task_task_statecode.Canceled) ? (
-            <Icon styles={{ root: { color: "red", fontWeight: '900' } }} iconName="ErrorBadge" />
-          ) : department.tasks.some(task => task.status === task_task_statecode.Open) ? (
+          {department.tasks.some(task => task.status === task_task_statecode.Open) ? (
             <Icon styles={{ root: { color: "orange", fontWeight: '900' } }} iconName="Warning" />
-          ) : (
+          ) : department.tasks.some(task => task.status === task_task_statecode.Completed) ? (
             <Icon styles={{ root: { color: "#009900", fontWeight: '900' } }} iconName="CompletedSolid" />
+          ) : (
+            <Icon styles={{ root: { color: "red", fontWeight: '900' } }} iconName="ErrorBadge" />
           )}
           <Text
             variant="medium"
@@ -86,8 +86,14 @@ const BottomPart = ({ department, departmentTitle, expanded, onClick }: IPartPro
             }}
           >
             <TooltipHost
-              content={departmentTitle}
-              directionalHint={DirectionalHint.bottomCenter}
+              content={(() => (
+                <Stack>
+                  <p>{departmentTitle}</p>
+                  <p />
+                  <p>(Open, Completed, Canceled)</p>
+                </Stack>
+              ))()}
+              directionalHint={DirectionalHint.topCenter}
             >
               {departmentTitle}
             </TooltipHost>
@@ -130,8 +136,14 @@ const TopPart = ({ department, departmentTitle, expanded, onClick }: IPartProps)
           }}
         >
           <TooltipHost
-            content={departmentTitle}
-            directionalHint={DirectionalHint.bottomCenter}
+            content={(() => (
+              <Stack>
+                <p>{departmentTitle}</p>
+                <p />
+                <p>(Open, Completed, Canceled)</p>
+              </Stack>
+            ))()}
+            directionalHint={DirectionalHint.topCenter}
           >
             {departmentTitle}
           </TooltipHost>

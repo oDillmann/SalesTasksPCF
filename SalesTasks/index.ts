@@ -33,7 +33,7 @@ export class SalesTasks
     _state: ComponentFramework.Dictionary,
     container: HTMLDivElement
   ): void {
-    console.info("Version 0.0.3");
+    console.info("Version 0.0.5");
     this.context = context;
     this.container = container;
     this.serviceProvider = new ServiceProvider();
