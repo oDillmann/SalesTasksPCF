@@ -8,7 +8,6 @@ export const axa_tasktemplateMetadata = {
   primaryIdAttribute: "axa_tasktemplateid",
   attributeTypes: {
     // Numeric Types
-    axa_phase: "Integer",
     axa_tstartdate: "Double",
     axa_ttargetdate: "Double",
     importsequencenumber: "Integer",
@@ -16,6 +15,8 @@ export const axa_tasktemplateMetadata = {
     utcconversiontimezonecode: "Integer",
     versionnumber: "BigInt",
     // Optionsets
+    axa_currentmilestone: "Optionset",
+    axa_phase: "Optionset",
     statecode: "Optionset",
     statuscode: "Optionset",
     // Date Formats
@@ -40,6 +41,7 @@ export const axa_tasktemplateMetadata = {
 export enum axa_TaskTemplateAttributes {
   axa_Alerts = "axa_alerts",
   axa_Cashpayment = "axa_cashpayment",
+  axa_CurrentMilestone = "axa_currentmilestone",
   axa_Department = "axa_department",
   axa_DepartmentName = "axa_departmentname",
   axa_Fasttrack = "axa_fasttrack",
@@ -88,20 +90,22 @@ export enum axa_TaskTemplateAttributes {
 export interface axa_TaskTemplate extends IEntity {
   // Alerts? BooleanType
   axa_alerts?: boolean | null;
-  // Cash payment BooleanType
+  // Cash Payment Specific BooleanType
   axa_cashpayment?: boolean | null;
+  // Current Milestone axa_milestoneoptions
+  axa_currentmilestone?: import("../enums/axa_milestoneoptions").axa_milestoneoptions | null;
   // Department LookupType
   axa_department?: import("cdsify").EntityReference | null;
   //  StringType
   axa_departmentname?: string | null;
-  // Fast track BooleanType
+  // Fast-Track Specific BooleanType
   axa_fasttrack?: boolean | null;
-  // Has attachments? BooleanType
+  // Documentation required BooleanType
   axa_hasattachments?: boolean | null;
   // ID [Required] StringType
   axa_id?: string;
-  // Phase IntegerType
-  axa_phase?: number | null;
+  // Phase axa_phases
+  axa_phase?: import("../enums/axa_phases").axa_phases | null;
   // Recipients StringType
   axa_recipients?: string | null;
   // Task subject StringType
@@ -110,9 +114,9 @@ export interface axa_TaskTemplate extends IEntity {
   axa_tasktemplateid?: import("cdsify").Guid | null;
   // Task Type StringType
   axa_tasktype?: string | null;
-  // Trade-in? BooleanType
+  // Trade-in Specific BooleanType
   axa_tradein?: boolean | null;
-  // T+ start date DoubleType
+  // T+ Start Date DoubleType
   axa_tstartdate?: number | null;
   // T- Target Date DoubleType
   axa_ttargetdate?: number | null;

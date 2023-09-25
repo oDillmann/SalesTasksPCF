@@ -9,4 +9,5 @@ export type Task = {
   cashPayment: boolean;
   fastTrack: boolean;
   DSF: DSF;
+  documentName?: string;
 }

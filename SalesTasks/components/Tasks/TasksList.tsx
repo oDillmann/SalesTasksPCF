@@ -9,16 +9,8 @@ interface IProps {
 
 const TasksList = ({ department }: IProps) => {
   return (
-    <Stack styles={{
-      root: {
-        paddingTop: "0.5rem",
-        width: '100%'
-      }
-    }}>
-      {department.tasks.map(task => {
-        console.log(task.title, task.tradeIn);
-        return <TaskItem task={task} key={task.id + "taskItem"} />;
-      })}
+    <Stack styles={{ root: { paddingTop: "0.5rem", width: '100%' } }}>
+      {department.tasks.map(task => <TaskItem task={task} key={task.id + "taskItem"} />)}
     </Stack>
   );
 };

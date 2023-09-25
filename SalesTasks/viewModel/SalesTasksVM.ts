@@ -58,37 +58,9 @@ export default class SalesTasksVM {
       return false;
     }
     this.PCFerror = undefined;
-    // if (!this.saveHandlerAdded) {
-    //   const xrm: any = window.parent.Xrm;
-    //   try {
-    //     const formContext = xrm.Page.getControl(
-    //       this.context.parameters?.sampleProperty.attributes?.LogicalName ||
-    //       "axa_name"
-    //     )?.formContext;
-    //     formContext.data.entity.addOnSave(this.onSaveHandler.bind(this));
-    //     this.saveHandlerAdded = true;
-    //   } catch (e: any) {
-    //     console.dir(e);
-    //   }
-    // }
     await this.fetchData();
     this.isLoading = false;
   }
-
-  // /**
-  //  * this function is called on form save event
-  //  * the reason we have this on top of the saveQuestion function
-  //  * is just to split the code up, where here we handle whether we save or not
-  //  */
-  // public async onSaveHandler(
-  //   event: Xrm.Events.SaveEventContext
-  // ): Promise<void> {
-  //   try {
-  //     // SAVE STUFF
-  //   } catch (e: any) {
-  //     console.dir(e);
-  //   }
-  // }
 
   public async fetchData(): Promise<void> {
     try {
@@ -114,6 +86,15 @@ export default class SalesTasksVM {
         return newD
       })
       this.forceUpdate();
+    } catch (e: any) {
+      console.log(e);
+      this.setError(e.message);
+    }
+  }
+
+  public async saveFile(file: File, taskId: string) {
+    try {
+      await this.cdsService.uploadFile(file, taskId, "tasks");
     } catch (e: any) {
       console.log(e);
       this.setError(e.message);
