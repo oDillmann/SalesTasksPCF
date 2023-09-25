@@ -19,10 +19,7 @@ const useAddAttachment = (): [(taskId: string) => void] => {
       }
 
       inputElement.onchange = (ev: any) => {
-        if (ev.target.files) {
-          saveFile(taskId, ev.target.files[0])
-        } else {
-        }
+        if (ev.target.files) { saveFile(taskId, ev.target.files[0]) }
       };
 
       inputElement.click();
