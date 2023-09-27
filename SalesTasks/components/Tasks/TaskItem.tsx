@@ -6,6 +6,7 @@ import { useVM } from '../../viewModel/context';
 import { Task } from '../../types/Task';
 import { taskMetadata } from '../../cds-generated/entities/Task';
 import useAddAttachment from './AddAttachment';
+import MarkButton from './MarkButton';
 
 interface IProps {
   task: Task;
@@ -13,18 +14,10 @@ interface IProps {
 
 const TaskItem = ({ task }: IProps) => {
   const vm = useVM();
-  const [isLoading, setIsLoading] = React.useState(false);
   const [addAttachment] = useAddAttachment();
 
   const LineDoubleClickHandler = () => {
     vm.context.navigation.openForm({ entityId: task.id, entityName: taskMetadata.logicalName })
-  }
-
-  const MarkAsCompleteHandler = async () => {
-    if (task.status === task_task_statecode.Completed) return;
-    setIsLoading(true);
-    await vm.MarkTaskAsComplete(task.id)
-    setIsLoading(false);
   }
 
   return (
@@ -93,36 +86,7 @@ const TaskItem = ({ task }: IProps) => {
             }}
           />
         </TooltipHost>
-        {isLoading ? (
-          <Spinner size={SpinnerSize.small} styles={{ root: { padding: '0.24rem' } }} />
-        ) : (
-          <TooltipHost content={task.status === task_task_statecode.Completed ? "" : "Mark as complete"}>
-            <Icon
-              iconName="CheckMark"
-              onClick={MarkAsCompleteHandler}
-              styles={{
-                root: {
-                  cursor: task.status === task_task_statecode.Completed ? "" : "pointer",
-                  fontWeight: '900',
-                  color: task.status === task_task_statecode.Completed ? "#999999" : "#5555ff",
-                  borderRadius: '4px',
-                  transition: "all 0.05s ease-in-out",
-                  padding: '0.3rem',
-                  backgroundColor: task.status === task_task_statecode.Completed ? "#99999933" : "#5555ff11",
-                  selectors: task.status === task_task_statecode.Completed ? {} : {
-                    ":hover": {
-                      backgroundColor: "#5555ff22",
-                    },
-                    ":active": {
-                      backgroundColor: "#5555ff44",
-                      color: "#0000ff"
-                    }
-                  }
-                }
-              }}
-            />
-          </TooltipHost>
-        )}
+        <MarkButton task={task} />
       </Stack>
     </Stack >
   )

@@ -72,14 +72,17 @@ export default class SalesTasksVM {
     }
   }
 
-  public async MarkTaskAsComplete(taskId: string) {
+  public async MarkTask(taskId: string, markAs: task_task_statecode) {
     try {
-      await this.cdsService.markTaskAsComplete(taskId);
+      if (markAs === task_task_statecode.Completed)
+        await this.cdsService.markTaskAsComplete(taskId);
+      else if (markAs === task_task_statecode.Open)
+        await this.cdsService.resetTaskAsOpen(taskId);
       this.Departments = this.Departments.map((d) => {
         const newD = { ...d };
         newD.tasks = newD.tasks.map((t) => {
           if (t.id === taskId) {
-            t.status = task_task_statecode.Completed;
+            t.status = markAs
           }
           return t;
         })

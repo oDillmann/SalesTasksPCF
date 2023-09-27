@@ -94,7 +94,23 @@ export default class CdsService {
       "axa_checkeddate": new Date().toISOString()
     }
     try {
-      await this.Context.webAPI.updateRecord("task", taskId, task);
+      await this.Context.webAPI.updateRecord(taskMetadata.logicalName, taskId, task);
+    } catch (error: any) {
+      console.log(error);
+      throw new Error(error.message);
+    }
+  }
+
+  public async resetTaskAsOpen(taskId: string) {
+    const task = {
+      "@odata.type": "Microsoft.Dynamics.CRM.task",
+      "statecode": task_task_statecode.Open,
+      "statuscode": task_task_statuscode.InProgress,
+      "axa_CheckedBy_Task@odata.bind": null,
+      "axa_checkeddate": null,
+    }
+    try {
+      await this.Context.webAPI.updateRecord(taskMetadata.logicalName, taskId, task);
     } catch (error: any) {
       console.log(error);
       throw new Error(error.message);
