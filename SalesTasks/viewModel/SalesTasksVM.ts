@@ -74,8 +74,11 @@ export default class SalesTasksVM {
 
   public async MarkTask(taskId: string, markAs: task_task_statecode) {
     try {
-      if (markAs === task_task_statecode.Completed)
+      if (markAs === task_task_statecode.Completed) {
+        const task = this.Departments.flatMap((d) => d.tasks).find((t) => t.id === taskId);
+        if (task?.documentationRequired && !task?.documentName) console.log("Please upload document")
         await this.cdsService.markTaskAsComplete(taskId);
+      }
       else if (markAs === task_task_statecode.Open)
         await this.cdsService.resetTaskAsOpen(taskId);
       this.Departments = this.Departments.map((d) => {

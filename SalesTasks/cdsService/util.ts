@@ -1,6 +1,3 @@
-import { IColumn } from "@fluentui/react";
-
-
 export const base64ToUrl = (base64: string, type: string) => {
   const blob = base64ToBlob(base64, type);
   const url = URL.createObjectURL(blob);

@@ -1,5 +1,6 @@
 import { axa_DealSetupFormAttributes } from "../cds-generated/entities/axa_DealSetupForm";
 import { axa_DepartmentAttributes } from "../cds-generated/entities/axa_Department";
+import { axa_SalesFulfillmentStatusAttributes } from "../cds-generated/entities/axa_SalesFulfillmentStatus";
 import { TaskAttributes, taskMetadata } from "../cds-generated/entities/Task";
 import { task_task_statecode } from "../cds-generated/enums/task_task_statecode";
 import { task_task_statuscode } from "../cds-generated/enums/task_task_statuscode";
@@ -28,6 +29,7 @@ export default class CdsService {
       `    <attribute name='${TaskAttributes.StateCode}'/>`,
       `    <attribute name='${TaskAttributes.Subject}'/>`,
       `    <attribute name='${TaskAttributes.ActivityId}'/>`,
+      `    <attribute name='${TaskAttributes.axa_Hasattachments}'/>`,
       `    <attribute name='${TaskAttributes.axa_Document_Name}'/>`,
       `    <link-entity name='axa_department' from='axa_departmentid' to='axa_department' link-type='outer' alias='${this.departmentAlias}'>`,
       `      <attribute name='axa_name'/>`,
@@ -61,6 +63,7 @@ export default class CdsService {
       const fastTrack = task[TaskAttributes.axa_Fasttrack]
       const tradeIn = task[TaskAttributes.axa_Tradeinincluded]
       const cashPayment = task[TaskAttributes.axa_Cashpayment]
+      const documentationRequired = task[TaskAttributes.axa_Hasattachments]
       const documentName = task[TaskAttributes.axa_Document_Name]
       const title = task[TaskAttributes.Subject]
       const id = task[TaskAttributes.ActivityId]
@@ -75,10 +78,10 @@ export default class CdsService {
         groupedTasks[department] = {
           id: index,
           title: department,
-          tasks: [{ id, title, status, fastTrack, tradeIn, cashPayment, DSF, documentName }]
+          tasks: [{ id, title, status, fastTrack, tradeIn, cashPayment, DSF, documentName, documentationRequired }]
         }
       } else {
-        groupedTasks[department].tasks.push({ id, title, status, fastTrack, tradeIn, cashPayment, DSF, documentName, })
+        groupedTasks[department].tasks.push({ id, title, status, fastTrack, tradeIn, cashPayment, DSF, documentName, documentationRequired })
       }
     })
     return Object.keys(groupedTasks).map(key => groupedTasks[key]);

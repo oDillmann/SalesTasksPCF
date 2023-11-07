@@ -15,6 +15,7 @@ const MarkButton = ({ task }: props) => {
 
   const MarkChangeHandler = async () => {
     if (task.status === task_task_statecode.Canceled) return;
+    if (task.documentationRequired && !task.documentName) return;
     if (task.status === task_task_statecode.Open) {
       setIsLoading(true);
       await vm.MarkTask(task.id, task_task_statecode.Completed);
@@ -35,7 +36,7 @@ const MarkButton = ({ task }: props) => {
   }
 
   return (
-    <TooltipHost content={task.status === task_task_statecode.Canceled ? "" : task.status === task_task_statecode.Completed ? "Reopen" : "Mark as complete"}>
+    <TooltipHost content={task.status === task_task_statecode.Canceled ? "" : task.status === task_task_statecode.Completed ? "Reopen" : task.documentationRequired && !task.documentName ? "Document is required!" : "Mark as complete"}>
       {isLoading ? (
         <Spinner size={SpinnerSize.small} styles={{ root: { padding: '0.24rem' } }} />
       ) : (
@@ -44,7 +45,7 @@ const MarkButton = ({ task }: props) => {
           onClick={MarkChangeHandler}
           styles={{
             root: {
-              cursor: task.status === task_task_statecode.Canceled ? "" : "pointer",
+              cursor: task.status === task_task_statecode.Canceled ? "" : task.documentationRequired && !task.documentName ? "not-allowed" : "pointer",
               fontWeight: '900',
               color: task.status === task_task_statecode.Canceled ? "#999999" : task.status === task_task_statecode.Completed ? "#119911" : "#5555ff",
               borderRadius: '4px',
@@ -54,7 +55,7 @@ const MarkButton = ({ task }: props) => {
               selectors: task.status === task_task_statecode.Canceled ? {} : task.status === task_task_statecode.Completed ? {
                 ":hover": { backgroundColor: "#11991122", },
                 ":active": { backgroundColor: "#11991144", color: "#00aa00" }
-              } : {
+              } : task.documentationRequired && !task.documentName ? {} : {
                 ":hover": { backgroundColor: "#5555ff22", },
                 ":active": { backgroundColor: "#5555ff44", color: "#0000ff" }
               }

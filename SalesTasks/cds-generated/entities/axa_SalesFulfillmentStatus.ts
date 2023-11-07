@@ -58,6 +58,7 @@ export enum axa_SalesFulfillmentStatusAttributes {
   axa_CustomerProspect = "axa_customerprospect",
   axa_CustomerProspectName = "axa_customerprospectname",
   axa_CustomerProspectYomiName = "axa_customerprospectyominame",
+  axa_CWSID = "axa_cwsid",
   axa_Description = "axa_description",
   axa_DoescustomerhaveCWS = "axa_doescustomerhavecws",
   axa_DoesCustomerhavedatagovernanceform = "axa_doescustomerhavedatagovernanceform",
@@ -138,6 +139,8 @@ export interface axa_SalesFulfillmentStatus extends IEntity {
   axa_customerprospectname?: string | null;
   //  StringType
   axa_customerprospectyominame?: string | null;
+  // CWSID StringType
+  axa_cwsid?: string | null;
   // Description StringType
   axa_description?: string | null;
   // Does customer have  CWS BooleanType
@@ -148,8 +151,8 @@ export interface axa_SalesFulfillmentStatus extends IEntity {
   axa_dsf?: import("cdsify").EntityReference | null;
   //  StringType
   axa_dsfname?: string | null;
-  // Equipment Number(EQN#) LookupType
-  axa_equipmentnumbereqn?: import("cdsify").EntityReference | null;
+  // Equipment Number(EQN#) [Required] LookupType
+  axa_equipmentnumbereqn?: import("cdsify").EntityReference;
   //  StringType
   axa_equipmentnumbereqnname?: string | null;
   // Estimated Arrival Date DateTimeType DateOnly:UserLocal
@@ -192,8 +195,8 @@ export interface axa_SalesFulfillmentStatus extends IEntity {
   axa_salesresponsibleyominame?: string | null;
   // Sales Status axa_salesfulfillmentstatus_axa_salesfulfillmentstatus_axa_salesstatus
   axa_salesstatus?: import("../enums/axa_salesfulfillmentstatus_axa_salesfulfillmentstatus_axa_salesstatus").axa_salesfulfillmentstatus_axa_salesfulfillmentstatus_axa_salesstatus | null;
-  // Serial number StringType
-  axa_serialnumber?: string | null;
+  // Serial number [Required] StringType
+  axa_serialnumber?: string;
   // Service Call number LookupType
   axa_servicecallnumber?: import("cdsify").EntityReference | null;
   //  StringType

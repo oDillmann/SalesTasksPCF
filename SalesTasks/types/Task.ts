@@ -8,6 +8,7 @@ export type Task = {
   tradeIn: boolean;
   cashPayment: boolean;
   fastTrack: boolean;
+  documentationRequired: boolean;
   DSF: DSF;
   documentName?: string;
 }

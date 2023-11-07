@@ -90,7 +90,7 @@ export enum axa_TaskTemplateAttributes {
 export interface axa_TaskTemplate extends IEntity {
   // Alerts? BooleanType
   axa_alerts?: boolean | null;
-  // Cash Payment Specific BooleanType
+  // Skip for Cash Payment BooleanType
   axa_cashpayment?: boolean | null;
   // Current Milestone axa_milestoneoptions
   axa_currentmilestone?: import("../enums/axa_milestoneoptions").axa_milestoneoptions | null;
@@ -98,7 +98,7 @@ export interface axa_TaskTemplate extends IEntity {
   axa_department?: import("cdsify").EntityReference | null;
   //  StringType
   axa_departmentname?: string | null;
-  // Fast-Track Specific BooleanType
+  // Skip for Fast-Track BooleanType
   axa_fasttrack?: boolean | null;
   // Documentation required BooleanType
   axa_hasattachments?: boolean | null;
@@ -114,7 +114,7 @@ export interface axa_TaskTemplate extends IEntity {
   axa_tasktemplateid?: import("cdsify").Guid | null;
   // Task Type StringType
   axa_tasktype?: string | null;
-  // Trade-in Specific BooleanType
+  // Add for Trade-In? BooleanType
   axa_tradein?: boolean | null;
   // T+ Start Date DoubleType
   axa_tstartdate?: number | null;
